@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://mortagagecalculator.co.uk/</loc>
+    <lastmod>2025-05-08</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/blog/index.html</loc>
+    <lastmod>2025-05-08</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/about.html</loc>
+    <lastmod>2025-05-08</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/contact.html</loc>
+    <lastmod>2025-05-08</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/privacy.html</loc>
+    <lastmod>2025-05-08</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/faq.html</loc>
+    <lastmod>2025-05-08</lastmod>
+    <priority>0.60</priority>
+  </url>
+</urlset>
