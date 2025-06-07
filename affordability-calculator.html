@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free UK mortgage affordability calculator. Find out how much you can borrow based on your income, expenses, and financial situation.">
+  <title>Mortgage Affordability Calculator UK - How Much Can I Borrow?</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4865020440728085" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    .navbar { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .calculator-container {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    .result-container {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .result-container.highlight {
+      background-color: #e8f4fe;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="/index.html">UK Mortgage</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/faq.html">FAQs</a></li>
+          <li class="nav-item"><a class="nav-link" href="/privacy.html">Privacy</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog/index.html">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="calculator-container p-4 p-md-5">
+          <h1 class="text-center mb-4">Mortgage Affordability Calculator</h1>
+          <p class="text-center text-muted mb-5">Find out how much you can borrow based on your income and expenses</p>
+          
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <form id="affordabilityForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="annualIncome" class="form-label">Annual Income (£)</label>
+                <input type="number" class="form-control" id="annualIncome" placeholder="50000" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="partnerIncome" class="form-label">Partner's Annual Income (£)</label>
+                <input type="number" class="form-control" id="partnerIncome" placeholder="0">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="monthlyExpenses" class="form-label">Monthly Expenses (£)</label>
+                <input type="number" class="form-control" id="monthlyExpenses" placeholder="2000" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="monthlyDebts" class="form-label">Monthly Debt Payments (£)</label>
+                <input type="number" class="form-control" id="monthlyDebts" placeholder="300">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="deposit" class="form-label">Available Deposit (£)</label>
+                <input type="number" class="form-control" id="deposit" placeholder="50000" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="interestRate" class="form-label">Interest Rate (%)</label>
+                <input type="number" class="form-control" id="interestRate" step="0.01" value="5.5" required>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg px-5">Calculate Affordability</button>
+            </div>
+          </form>
+
+          <div id="results" class="result-container p-4 mt-4" style="display: none;">
+            <h3 class="text-center mb-4">Your Affordability Results</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Maximum Loan Amount</h4>
+                    <p class="h3 text-primary mb-0" id="maxLoan">£0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Maximum Property Price</h4>
+                    <p class="h3 text-primary mb-0" id="maxPrice">£0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Monthly Payment</h4>
+                    <p class="h3 text-primary mb-0" id="monthlyPayment">£0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Debt-to-Income Ratio</h4>
+                    <p class="h3 text-primary mb-0" id="dtiRatio">0%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <div class="mt-5">
+            <h3 class="h5 mb-3">How Affordability is Calculated</h3>
+            <p>Lenders typically use these criteria to determine how much you can borrow:</p>
+            <ul>
+              <li><strong>Income Multiple:</strong> Usually 4-5 times your annual income</li>
+              <li><strong>Debt-to-Income Ratio:</strong> Monthly debts should be less than 40% of income</li>
+              <li><strong>Stress Testing:</strong> Can you afford payments if rates increase?</li>
+              <li><strong>Credit Score:</strong> Higher scores qualify for better rates</li>
+            </ul>
+            <p><strong>Related:</strong> Read our <a href="/blog/first-time-buyer-guide.html" class="text-decoration-none">first-time buyer guide</a> for more mortgage advice.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>UK Mortgage Calculator</h5>
+          <p class="text-muted">Expert mortgage calculators and advice.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">© 2025 UK Mortgage Calculator. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mortgage Affordability Calculator",
+    "description": "Calculate how much you can borrow for a UK mortgage based on your income and expenses",
+    "url": "https://mortagagecalculator.co.uk/affordability-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    }
+  }
+  </script>
+
+  <script>
+    function calculateAffordability() {
+      const annualIncome = parseFloat(document.getElementById('annualIncome').value) || 0;
+      const partnerIncome = parseFloat(document.getElementById('partnerIncome').value) || 0;
+      const monthlyExpenses = parseFloat(document.getElementById('monthlyExpenses').value) || 0;
+      const monthlyDebts = parseFloat(document.getElementById('monthlyDebts').value) || 0;
+      const deposit = parseFloat(document.getElementById('deposit').value) || 0;
+      const interestRate = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
+
+      const totalIncome = annualIncome + partnerIncome;
+      const monthlyIncome = totalIncome / 12;
+      
+      // Calculate affordability using 4.5x income multiple
+      const maxLoanByIncome = totalIncome * 4.5;
+      
+      // Calculate affordability based on monthly payments (35% of gross income)
+      const maxMonthlyPayment = monthlyIncome * 0.35;
+      const availableForMortgage = maxMonthlyPayment - monthlyDebts;
+      
+      if (availableForMortgage <= 0) {
+        alert('Your debt payments are too high relative to your income.');
+        return;
+      }
+      
+      // Calculate max loan based on monthly payment capacity (25 year term)
+      const payments = 25 * 12;
+      const x = Math.pow(1 + interestRate, payments);
+      const maxLoanByPayment = availableForMortgage * (x - 1) / (x * interestRate);
+      
+      // Use the lower of the two calculations
+      const maxLoan = Math.min(maxLoanByIncome, maxLoanByPayment);
+      const maxPropertyPrice = maxLoan + deposit;
+      
+      // Calculate actual monthly payment
+      const x2 = Math.pow(1 + interestRate, payments);
+      const monthlyPayment = (maxLoan * x2 * interestRate) / (x2 - 1);
+      
+      // Calculate DTI ratio
+      const dtiRatio = ((monthlyPayment + monthlyDebts) / monthlyIncome) * 100;
+      
+      // Display results
+      document.getElementById('maxLoan').textContent = `£${maxLoan.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('maxPrice').textContent = `£${maxPropertyPrice.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('monthlyPayment').textContent = `£${monthlyPayment.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('dtiRatio').textContent = `${dtiRatio.toFixed(1)}%`;
+      
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('affordabilityForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calculateAffordability();
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

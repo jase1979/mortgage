@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interest-only mortgage calculator UK. Calculate monthly payments and compare with repayment mortgages. Plan your repayment strategy.">
+  <title>Interest-Only Mortgage Calculator UK - Monthly Payments & Strategy</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4865020440728085" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    .navbar { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .calculator-container {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    .payment-highlight {
+      background: linear-gradient(135deg, #fd7e14, #e63946);
+      color: white;
+      border-radius: 8px;
+    }
+    .warning-box {
+      background-color: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 8px;
+      color: #856404;
+    }
+    .comparison-highlight {
+      background: linear-gradient(135deg, #6f42c1, #007bff);
+      color: white;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="/index.html">UK Mortgage</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-bs-toggle="dropdown">Calculators</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/affordability-calculator.html">Affordability Calculator</a></li>
+              <li><a class="dropdown-item" href="/stamp-duty-calculator.html">Stamp Duty Calculator</a></li>
+              <li><a class="dropdown-item" href="/overpayment-calculator.html">Overpayment Calculator</a></li>
+              <li><a class="dropdown-item" href="/buy-to-let-calculator.html">Buy-to-Let Calculator</a></li>
+              <li><a class="dropdown-item" href="/remortgage-calculator.html">Remortgage Calculator</a></li>
+              <li><a class="dropdown-item" href="/help-to-buy-calculator.html">Help to Buy Calculator</a></li>
+              <li><a class="dropdown-item" href="/offset-mortgage-calculator.html">Offset Calculator</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/blog/index.html">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="calculator-container p-4 p-md-5">
+          <h1 class="text-center mb-4">Interest-Only Mortgage Calculator</h1>
+          <p class="text-center text-muted mb-5">Calculate monthly payments and plan your repayment strategy</p>
+          
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <form id="interestOnlyForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="loanAmount" class="form-label">Loan Amount (£)</label>
+                <input type="number" class="form-control" id="loanAmount" placeholder="300000" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="interestRate" class="form-label">Interest Rate (% p.a.)</label>
+                <input type="number" class="form-control" id="interestRate" step="0.01" value="5.5" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="interestOnlyTerm" class="form-label">Interest-Only Period (Years)</label>
+                <input type="number" class="form-control" id="interestOnlyTerm" value="10" required>
+                <small class="text-muted">Typical range: 5-15 years</small>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="totalTerm" class="form-label">Total Mortgage Term (Years)</label>
+                <input type="number" class="form-control" id="totalTerm" value="25" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="repaymentStrategy" class="form-label">Repayment Strategy</label>
+                <select class="form-select" id="repaymentStrategy">
+                  <option value="investment">Investment/Pension Growth</option>
+                  <option value="savings">Regular Savings</option>
+                  <option value="property">Property Sale</option>
+                  <option value="inheritance">Expected Inheritance</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3" id="investmentReturnField">
+                <label for="investmentReturn" class="form-label">Expected Annual Return (%)</label>
+                <input type="number" class="form-control" id="investmentReturn" step="0.1" value="7.0">
+                <small class="text-muted">For investment/savings strategies</small>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg px-5">Calculate Interest-Only</button>
+            </div>
+          </form>
+
+          <div id="results" class="mt-4" style="display: none;">
+            <div class="payment-highlight p-4 mb-4 text-center">
+              <h3 class="mb-2">Monthly Interest-Only Payment</h3>
+              <h2 class="mb-0" id="interestOnlyPayment">£0</h2>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Annual Interest Cost</h4>
+                    <p class="h4 text-danger mb-0" id="annualInterest">£0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Total Interest (Interest-Only Period)</h4>
+                    <p class="h4 text-warning mb-0" id="totalInterestIO">£0</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="warning-box p-4 mb-4">
+              <h4 class="h6 mb-2"><i class="fas fa-exclamation-triangle me-2"></i>Important Reminder</h4>
+              <p class="mb-2">At the end of the interest-only period, you must repay the full loan amount of <strong id="reminderAmount">£0</strong>.</p>
+              <p class="mb-0">Ensure you have a robust repayment strategy in place.</p>
+            </div>
+
+            <div class="comparison-highlight p-4 mb-4">
+              <h4 class="mb-3">Interest-Only vs Repayment Comparison</h4>
+              <div class="row text-center">
+                <div class="col-md-6">
+                  <h5 class="h6">Interest-Only</h5>
+                  <p class="h4 mb-0" id="ioMonthlyTotal">£0/month</p>
+                  <small>Lower monthly payments</small>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="h6">Full Repayment</h5>
+                  <p class="h4 mb-0" id="repaymentMonthlyTotal">£0/month</p>
+                  <small>Higher but pays off capital</small>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-4" id="strategySection">
+              <h4 class="h6 mb-3">Repayment Strategy Analysis</h4>
+              <div class="table-responsive">
+                <table class="table table-sm">
+                  <tbody>
+                    <tr>
+                      <td><strong>Strategy</strong></td>
+                      <td id="strategyType">Investment Growth</td>
+                    </tr>
+                    <tr>
+                      <td>Monthly Savings Required</td>
+                      <td id="monthlySavingsRequired">£0</td>
+                    </tr>
+                    <tr>
+                      <td>Total Amount Needed at End</td>
+                      <td id="totalAmountNeeded">£0</td>
+                    </tr>
+                    <tr>
+                      <td>Expected Growth/Return</td>
+                      <td id="expectedGrowth">0%</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Projected Final Value</strong></td>
+                      <td id="projectedValue" class="fw-bold">£0</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div id="strategyStatus" class="mt-3"></div>
+            </div>
+          </div>
+
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <div class="mt-5">
+            <h3 class="h5 mb-3">Interest-Only Mortgages Explained</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <h4 class="h6">How They Work</h4>
+                <ul class="small">
+                  <li>Pay only interest during initial period</li>
+                  <li>Capital balance remains unchanged</li>
+                  <li>Must repay full amount at end of term</li>
+                  <li>Requires credible repayment strategy</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h4 class="h6">Common Repayment Strategies</h4>
+                <ul class="small">
+                  <li>Investment portfolio (ISAs, pensions)</li>
+                  <li>Regular savings plan</li>
+                  <li>Property sale or downsizing</li>
+                  <li>Inheritance or windfall</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <h4 class="h6">Benefits</h4>
+                <ul class="small">
+                  <li>Lower monthly payments initially</li>
+                  <li>Potential for investment growth</li>
+                  <li>Flexibility for irregular income</li>
+                  <li>Tax advantages for buy-to-let</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h4 class="h6">Risks</h4>
+                <ul class="small">
+                  <li>Investment may underperform</li>
+                  <li>No guaranteed repayment vehicle</li>
+                  <li>Higher interest rates typically</li>
+                  <li>Capital balance never reduces</li>
+                </ul>
+              </div>
+            </div>
+            <p><strong>Related:</strong> Compare with our <a href="/index.html" class="text-decoration-none">standard mortgage calculator</a> and <a href="/buy-to-let-calculator.html" class="text-decoration-none">buy-to-let calculator</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>UK Mortgage Calculator</h5>
+          <p class="text-muted">Expert mortgage calculators and advice.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">© 2025 UK Mortgage Calculator. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Interest-Only Mortgage Calculator",
+    "description": "Calculate interest-only mortgage payments and plan repayment strategy",
+    "url": "https://mortagagecalculator.co.uk/interest-only-calculator.html",
+    "applicationCategory": "FinanceApplication"
+  }
+  </script>
+
+  <script>
+    document.getElementById('repaymentStrategy').addEventListener('change', function() {
+      const strategy = this.value;
+      const investmentField = document.getElementById('investmentReturnField');
+      
+      if (strategy === 'investment' || strategy === 'savings') {
+        investmentField.style.display = 'block';
+      } else {
+        investmentField.style.display = 'none';
+      }
+    });
+
+    function calculateInterestOnly() {
+      const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+      const interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
+      const interestOnlyTerm = parseFloat(document.getElementById('interestOnlyTerm').value);
+      const totalTerm = parseFloat(document.getElementById('totalTerm').value);
+      const strategy = document.getElementById('repaymentStrategy').value;
+      const investmentReturn = parseFloat(document.getElementById('investmentReturn').value) / 100 || 0;
+
+      // Calculate interest-only payment
+      const monthlyInterestRate = interestRate / 12;
+      const monthlyInterestPayment = loanAmount * monthlyInterestRate;
+      const annualInterestCost = loanAmount * interestRate;
+      const totalInterestIOPeriod = annualInterestCost * interestOnlyTerm;
+
+      // Calculate full repayment mortgage for comparison
+      const totalMonths = totalTerm * 12;
+      const x = Math.pow(1 + monthlyInterestRate, totalMonths);
+      const fullRepaymentPayment = (loanAmount * x * monthlyInterestRate) / (x - 1);
+
+      // Calculate repayment strategy requirements
+      let monthlySavingsRequired = 0;
+      let projectedValue = 0;
+      let strategyDescription = '';
+
+      switch(strategy) {
+        case 'investment':
+          strategyDescription = 'Investment Portfolio';
+          const monthlyReturn = investmentReturn / 12;
+          const savingsMonths = interestOnlyTerm * 12;
+          if (investmentReturn > 0) {
+            const futureValueFactor = (Math.pow(1 + monthlyReturn, savingsMonths) - 1) / monthlyReturn;
+            monthlySavingsRequired = loanAmount / futureValueFactor;
+            projectedValue = monthlySavingsRequired * futureValueFactor;
+          } else {
+            monthlySavingsRequired = loanAmount / savingsMonths;
+            projectedValue = loanAmount;
+          }
+          break;
+        case 'savings':
+          strategyDescription = 'Regular Savings';
+          const savingsMonthsReg = interestOnlyTerm * 12;
+          if (investmentReturn > 0) {
+            const monthlyReturnSav = investmentReturn / 12;
+            const futureValueFactorSav = (Math.pow(1 + monthlyReturnSav, savingsMonthsReg) - 1) / monthlyReturnSav;
+            monthlySavingsRequired = loanAmount / futureValueFactorSav;
+            projectedValue = monthlySavingsRequired * futureValueFactorSav;
+          } else {
+            monthlySavingsRequired = loanAmount / savingsMonthsReg;
+            projectedValue = loanAmount;
+          }
+          break;
+        case 'property':
+          strategyDescription = 'Property Sale';
+          monthlySavingsRequired = 0;
+          projectedValue = loanAmount;
+          break;
+        case 'inheritance':
+          strategyDescription = 'Expected Inheritance';
+          monthlySavingsRequired = 0;
+          projectedValue = loanAmount;
+          break;
+        default:
+          strategyDescription = 'Other Strategy';
+          monthlySavingsRequired = 0;
+          projectedValue = loanAmount;
+      }
+
+      // Display results
+      document.getElementById('interestOnlyPayment').textContent = `£${monthlyInterestPayment.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('annualInterest').textContent = `£${annualInterestCost.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('totalInterestIO').textContent = `£${totalInterestIOPeriod.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('reminderAmount').textContent = `£${loanAmount.toLocaleString('en-GB')}`;
+
+      // Comparison
+      document.getElementById('ioMonthlyTotal').textContent = `£${monthlyInterestPayment.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('repaymentMonthlyTotal').textContent = `£${fullRepaymentPayment.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+
+      // Strategy analysis
+      document.getElementById('strategyType').textContent = strategyDescription;
+      document.getElementById('monthlySavingsRequired').textContent = `£${monthlySavingsRequired.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('totalAmountNeeded').textContent = `£${loanAmount.toLocaleString('en-GB')}`;
+      document.getElementById('expectedGrowth').textContent = `${(investmentReturn * 100).toFixed(1)}%`;
+      document.getElementById('projectedValue').textContent = `£${projectedValue.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+
+      // Strategy status
+      const statusElement = document.getElementById('strategyStatus');
+      const shortfall = loanAmount - projectedValue;
+      if (Math.abs(shortfall) < 1000) {
+        statusElement.innerHTML = '<div class="alert alert-success"><i class="fas fa-check-circle me-2"></i>Strategy appears adequate to repay the loan.</div>';
+      } else if (shortfall > 0) {
+        statusElement.innerHTML = `<div class="alert alert-warning"><i class="fas fa-exclamation-triangle me-2"></i>Potential shortfall of £${shortfall.toLocaleString('en-GB')}. Consider increasing savings or improving returns.</div>`;
+      } else {
+        statusElement.innerHTML = `<div class="alert alert-info"><i class="fas fa-info-circle me-2"></i>Strategy may generate surplus of £${(-shortfall).toLocaleString('en-GB')}.</div>`;
+      }
+
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('interestOnlyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calculateInterestOnly();
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

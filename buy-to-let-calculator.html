@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Buy-to-let mortgage calculator UK. Calculate rental yield, monthly cash flow, and ROI for property investment mortgages.">
+  <title>Buy-to-Let Calculator UK - Rental Yield & ROI Calculator</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4865020440728085" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    .navbar { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .calculator-container {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    .result-container {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+    }
+    .yield-highlight {
+      background: linear-gradient(135deg, #17a2b8, #007bff);
+      color: white;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="/index.html">UK Mortgage</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/faq.html">FAQs</a></li>
+          <li class="nav-item"><a class="nav-link" href="/privacy.html">Privacy</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog/index.html">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="calculator-container p-4 p-md-5">
+          <h1 class="text-center mb-4">Buy-to-Let Calculator</h1>
+          <p class="text-center text-muted mb-5">Calculate rental yield, cash flow, and return on investment</p>
+          
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <form id="btlForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="propertyValue" class="form-label">Property Value (£)</label>
+                <input type="number" class="form-control" id="propertyValue" placeholder="300000" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="deposit" class="form-label">Deposit (£)</label>
+                <input type="number" class="form-control" id="deposit" placeholder="90000" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="monthlyRent" class="form-label">Monthly Rent (£)</label>
+                <input type="number" class="form-control" id="monthlyRent" placeholder="1500" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="interestRate" class="form-label">Mortgage Interest Rate (%)</label>
+                <input type="number" class="form-control" id="interestRate" step="0.01" value="6.5" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="mortgageTerm" class="form-label">Mortgage Term (Years)</label>
+                <input type="number" class="form-control" id="mortgageTerm" value="25" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="monthlyExpenses" class="form-label">Monthly Expenses (£)</label>
+                <input type="number" class="form-control" id="monthlyExpenses" placeholder="300" required>
+                <small class="text-muted">Management, insurance, maintenance, etc.</small>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg px-5">Calculate Returns</button>
+            </div>
+          </form>
+
+          <div id="results" class="result-container p-4 mt-4" style="display: none;">
+            <div class="yield-highlight p-4 mb-4 text-center">
+              <h3 class="mb-2">Gross Rental Yield</h3>
+              <h2 class="mb-0" id="grossYield">0%</h2>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Net Rental Yield</h4>
+                    <p class="h4 text-success mb-0" id="netYield">0%</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Monthly Cash Flow</h4>
+                    <p class="h4 mb-0" id="cashFlow">£0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Annual Cash Flow</h4>
+                    <p class="h4 text-primary mb-0" id="annualCashFlow">£0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Return on Investment</h4>
+                    <p class="h4 text-info mb-0" id="roi">0%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-4">
+              <h4 class="h6 mb-3">Monthly Breakdown</h4>
+              <div class="table-responsive">
+                <table class="table table-sm">
+                  <tbody>
+                    <tr>
+                      <td><strong>Monthly Rental Income</strong></td>
+                      <td class="text-end text-success" id="monthlyIncome">£0</td>
+                    </tr>
+                    <tr>
+                      <td>Mortgage Payment</td>
+                      <td class="text-end text-danger" id="mortgagePayment">-£0</td>
+                    </tr>
+                    <tr>
+                      <td>Property Expenses</td>
+                      <td class="text-end text-danger" id="propertyExpenses">-£0</td>
+                    </tr>
+                    <tr class="table-active">
+                      <td><strong>Net Monthly Cash Flow</strong></td>
+                      <td class="text-end fw-bold" id="netCashFlow">£0</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <div class="mt-5">
+            <h3 class="h5 mb-3">Understanding Buy-to-Let Returns</h3>
+            <ul>
+              <li><strong>Gross Yield:</strong> Annual rent ÷ Property value × 100</li>
+              <li><strong>Net Yield:</strong> (Annual rent - expenses) ÷ Property value × 100</li>
+              <li><strong>Cash Flow:</strong> Monthly rent minus mortgage and expenses</li>
+              <li><strong>ROI:</strong> Annual cash flow ÷ Deposit invested × 100</li>
+            </ul>
+            <p><strong>Good yields:</strong> 5-8% gross, 3-6% net (varies by location)</p>
+            <p><strong>Related:</strong> Read our <a href="/blog/buy-to-let-opportunities.html" class="text-decoration-none">buy-to-let investment guide</a> and <a href="/stamp-duty-calculator.html" class="text-decoration-none">stamp duty calculator</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>UK Mortgage Calculator</h5>
+          <p class="text-muted">Expert mortgage calculators and advice.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">© 2025 UK Mortgage Calculator. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Buy-to-Let Calculator",
+    "description": "Calculate buy-to-let rental yields and investment returns",
+    "url": "https://mortagagecalculator.co.uk/buy-to-let-calculator.html",
+    "applicationCategory": "FinanceApplication"
+  }
+  </script>
+
+  <script>
+    function calculateBTL() {
+      const propertyValue = parseFloat(document.getElementById('propertyValue').value);
+      const deposit = parseFloat(document.getElementById('deposit').value);
+      const monthlyRent = parseFloat(document.getElementById('monthlyRent').value);
+      const interestRate = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
+      const mortgageTerm = parseFloat(document.getElementById('mortgageTerm').value) * 12;
+      const monthlyExpenses = parseFloat(document.getElementById('monthlyExpenses').value);
+
+      const loanAmount = propertyValue - deposit;
+      const annualRent = monthlyRent * 12;
+
+      // Calculate mortgage payment
+      const x = Math.pow(1 + interestRate, mortgageTerm);
+      const monthlyMortgagePayment = (loanAmount * x * interestRate) / (x - 1);
+
+      // Calculate yields
+      const grossYield = (annualRent / propertyValue) * 100;
+      const netAnnualIncome = annualRent - (monthlyExpenses * 12);
+      const netYield = (netAnnualIncome / propertyValue) * 100;
+
+      // Calculate cash flow
+      const monthlyCashFlow = monthlyRent - monthlyMortgagePayment - monthlyExpenses;
+      const annualCashFlow = monthlyCashFlow * 12;
+
+      // Calculate ROI on deposit
+      const roi = (annualCashFlow / deposit) * 100;
+
+      // Display results
+      document.getElementById('grossYield').textContent = `${grossYield.toFixed(2)}%`;
+      document.getElementById('netYield').textContent = `${netYield.toFixed(2)}%`;
+      
+      const cashFlowElement = document.getElementById('cashFlow');
+      cashFlowElement.textContent = `£${monthlyCashFlow.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      cashFlowElement.className = monthlyCashFlow >= 0 ? 'h4 text-success mb-0' : 'h4 text-danger mb-0';
+      
+      document.getElementById('annualCashFlow').textContent = `£${annualCashFlow.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('roi').textContent = `${roi.toFixed(2)}%`;
+
+      // Monthly breakdown
+      document.getElementById('monthlyIncome').textContent = `£${monthlyRent.toLocaleString('en-GB')}`;
+      document.getElementById('mortgagePayment').textContent = `-£${monthlyMortgagePayment.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('propertyExpenses').textContent = `-£${monthlyExpenses.toLocaleString('en-GB')}`;
+      
+      const netCashFlowElement = document.getElementById('netCashFlow');
+      netCashFlowElement.textContent = `£${monthlyCashFlow.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      netCashFlowElement.className = monthlyCashFlow >= 0 ? 'text-end fw-bold text-success' : 'text-end fw-bold text-danger';
+
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('btlForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calculateBTL();
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

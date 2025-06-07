@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Offset mortgage calculator UK. Calculate how your savings can reduce mortgage interest and repayment time with offset mortgages.">
+  <title>Offset Mortgage Calculator UK - Calculate Interest Savings</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4865020440728085" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    .navbar { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .calculator-container {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    .savings-highlight {
+      background: linear-gradient(135deg, #20c997, #198754);
+      color: white;
+      border-radius: 8px;
+    }
+    .comparison-table { font-size: 0.9rem; }
+    .offset-visual {
+      background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+      border-radius: 8px;
+      border: 2px dashed #6c757d;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="/index.html">UK Mortgage</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-bs-toggle="dropdown">Calculators</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/affordability-calculator.html">Affordability Calculator</a></li>
+              <li><a class="dropdown-item" href="/stamp-duty-calculator.html">Stamp Duty Calculator</a></li>
+              <li><a class="dropdown-item" href="/overpayment-calculator.html">Overpayment Calculator</a></li>
+              <li><a class="dropdown-item" href="/buy-to-let-calculator.html">Buy-to-Let Calculator</a></li>
+              <li><a class="dropdown-item" href="/remortgage-calculator.html">Remortgage Calculator</a></li>
+              <li><a class="dropdown-item" href="/help-to-buy-calculator.html">Help to Buy Calculator</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/blog/index.html">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="calculator-container p-4 p-md-5">
+          <h1 class="text-center mb-4">Offset Mortgage Calculator</h1>
+          <p class="text-center text-muted mb-5">Calculate how your savings can reduce your mortgage interest and repayment time</p>
+          
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <form id="offsetForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="mortgageBalance" class="form-label">Outstanding Mortgage Balance (£)</label>
+                <input type="number" class="form-control" id="mortgageBalance" placeholder="250000" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="interestRate" class="form-label">Mortgage Interest Rate (%)</label>
+                <input type="number" class="form-control" id="interestRate" step="0.01" value="5.5" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="remainingTerm" class="form-label">Remaining Term (Years)</label>
+                <input type="number" class="form-control" id="remainingTerm" placeholder="20" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="savingsBalance" class="form-label">Savings/Current Account Balance (£)</label>
+                <input type="number" class="form-control" id="savingsBalance" placeholder="50000" required>
+                <small class="text-muted">Amount to offset against mortgage</small>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="savingsRate" class="form-label">Savings Interest Rate (% p.a.)</label>
+                <input type="number" class="form-control" id="savingsRate" step="0.01" value="2.5">
+                <small class="text-muted">Interest you'd earn on savings separately</small>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="taxRate" class="form-label">Tax Rate on Savings (%)</label>
+                <select class="form-select" id="taxRate">
+                  <option value="0">0% (Basic rate with allowance)</option>
+                  <option value="20" selected>20% (Basic rate taxpayer)</option>
+                  <option value="40">40% (Higher rate taxpayer)</option>
+                  <option value="45">45% (Additional rate taxpayer)</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg px-5">Calculate Offset Benefits</button>
+            </div>
+          </form>
+
+          <div id="results" class="mt-4" style="display: none;">
+            <div class="savings-highlight p-4 mb-4 text-center">
+              <h3 class="mb-2">Annual Interest Savings</h3>
+              <h2 class="mb-0" id="annualSavings">£0</h2>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Time Saved</h4>
+                    <p class="h4 text-success mb-0" id="timeSaved">0 years</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Total Interest Saved</h4>
+                    <p class="h4 text-info mb-0" id="totalInterestSaved">£0</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="offset-visual p-4 mb-4">
+              <h4 class="h6 mb-3">How Your Offset Works</h4>
+              <div class="row text-center">
+                <div class="col-md-4">
+                  <div class="bg-danger text-white p-3 rounded mb-2">
+                    <h5 class="h6 mb-1">Mortgage Balance</h5>
+                    <p class="mb-0" id="displayMortgage">£250,000</p>
+                  </div>
+                </div>
+                <div class="col-md-1 d-flex align-items-center justify-content-center">
+                  <i class="fas fa-minus text-primary h4"></i>
+                </div>
+                <div class="col-md-3">
+                  <div class="bg-success text-white p-3 rounded mb-2">
+                    <h5 class="h6 mb-1">Savings Offset</h5>
+                    <p class="mb-0" id="displaySavings">£50,000</p>
+                  </div>
+                </div>
+                <div class="col-md-1 d-flex align-items-center justify-content-center">
+                  <i class="fas fa-equals text-primary h4"></i>
+                </div>
+                <div class="col-md-3">
+                  <div class="bg-primary text-white p-3 rounded mb-2">
+                    <h5 class="h6 mb-1">Interest Charged On</h5>
+                    <p class="mb-0" id="chargedBalance">£200,000</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-4">
+              <h4 class="h6 mb-3">Comparison: Offset vs Separate Savings</h4>
+              <div class="table-responsive">
+                <table class="table comparison-table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Without Offset</th>
+                      <th>With Offset</th>
+                      <th>Benefit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Monthly Payment</strong></td>
+                      <td id="normalPayment">£0</td>
+                      <td id="offsetPayment">£0</td>
+                      <td id="paymentSaving" class="text-success">£0</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Interest Charged (Annual)</strong></td>
+                      <td id="normalInterest">£0</td>
+                      <td id="offsetInterest">£0</td>
+                      <td id="interestSaving" class="text-success">£0</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Savings Interest (After Tax)</strong></td>
+                      <td id="savingsIncome">£0</td>
+                      <td>£0 (No interest needed)</td>
+                      <td class="text-muted">N/A</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Net Annual Benefit</strong></td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td id="netBenefit" class="text-success fw-bold">£0</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <div class="mt-5">
+            <h3 class="h5 mb-3">Understanding Offset Mortgages</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <h4 class="h6">How It Works</h4>
+                <ul class="small">
+                  <li>Your savings balance reduces the mortgage balance for interest calculation</li>
+                  <li>You keep instant access to your savings</li>
+                  <li>No interest earned on offset savings</li>
+                  <li>Typically reduces mortgage term and total interest</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h4 class="h6">Key Benefits</h4>
+                <ul class="small">
+                  <li>Tax-efficient way to use savings</li>
+                  <li>Flexible access to funds when needed</li>
+                  <li>Can significantly reduce mortgage term</li>
+                  <li>Higher rate taxpayers benefit most</li>
+                </ul>
+              </div>
+            </div>
+            <p><strong>Related:</strong> Compare with our <a href="/overpayment-calculator.html" class="text-decoration-none">overpayment calculator</a> and read about <a href="/blog/mortgage-strategies.html" class="text-decoration-none">mortgage reduction strategies</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>UK Mortgage Calculator</h5>
+          <p class="text-muted">Expert mortgage calculators and advice.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">© 2025 UK Mortgage Calculator. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Offset Mortgage Calculator",
+    "description": "Calculate how savings can reduce mortgage interest with offset mortgages",
+    "url": "https://mortagagecalculator.co.uk/offset-mortgage-calculator.html",
+    "applicationCategory": "FinanceApplication"
+  }
+  </script>
+
+  <script>
+    function calculateOffset() {
+      const mortgageBalance = parseFloat(document.getElementById('mortgageBalance').value);
+      const interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
+      const remainingTerm = parseFloat(document.getElementById('remainingTerm').value);
+      const savingsBalance = parseFloat(document.getElementById('savingsBalance').value);
+      const savingsRate = parseFloat(document.getElementById('savingsRate').value) / 100;
+      const taxRate = parseFloat(document.getElementById('taxRate').value) / 100;
+
+      // Calculate effective mortgage balance after offset
+      const effectiveBalance = Math.max(0, mortgageBalance - savingsBalance);
+      
+      // Calculate monthly rates and terms
+      const monthlyRate = interestRate / 12;
+      const totalMonths = remainingTerm * 12;
+
+      // Calculate normal mortgage payment (without offset)
+      const normalX = Math.pow(1 + monthlyRate, totalMonths);
+      const normalPayment = (mortgageBalance * normalX * monthlyRate) / (normalX - 1);
+
+      // Calculate offset mortgage payment (if any balance remains)
+      let offsetPayment = 0;
+      if (effectiveBalance > 0) {
+        const offsetX = Math.pow(1 + monthlyRate, totalMonths);
+        offsetPayment = (effectiveBalance * offsetX * monthlyRate) / (offsetX - 1);
+      }
+
+      // Calculate annual interest charges
+      const normalAnnualInterest = mortgageBalance * interestRate;
+      const offsetAnnualInterest = effectiveBalance * interestRate;
+      const annualInterestSaving = normalAnnualInterest - offsetAnnualInterest;
+
+      // Calculate savings account income (after tax)
+      const grossSavingsIncome = savingsBalance * savingsRate;
+      const netSavingsIncome = grossSavingsIncome * (1 - taxRate);
+
+      // Net annual benefit of offset vs separate savings
+      const netAnnualBenefit = annualInterestSaving - netSavingsIncome;
+
+      // Calculate time saved (simplified approximation)
+      let timeSavedYears = 0;
+      if (effectiveBalance === 0) {
+        timeSavedYears = remainingTerm;
+      } else if (offsetPayment > 0 && normalPayment > offsetPayment) {
+        // Approximate time saving based on payment reduction
+        const paymentRatio = offsetPayment / normalPayment;
+        timeSavedYears = remainingTerm * (1 - paymentRatio) * 0.4; // Rough approximation
+      }
+
+      // Calculate total interest saved over full term
+      const normalTotalInterest = (normalPayment * totalMonths) - mortgageBalance;
+      const offsetTotalInterest = effectiveBalance > 0 ? (offsetPayment * totalMonths) - effectiveBalance : 0;
+      const totalInterestSaved = normalTotalInterest - offsetTotalInterest;
+
+      // Display results
+      document.getElementById('annualSavings').textContent = `£${annualInterestSaving.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('timeSaved').textContent = timeSavedYears >= 1 ? 
+        `${timeSavedYears.toFixed(1)} years` : 
+        `${(timeSavedYears * 12).toFixed(0)} months`;
+      document.getElementById('totalInterestSaved').textContent = `£${totalInterestSaved.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+
+      // Visual display
+      document.getElementById('displayMortgage').textContent = `£${mortgageBalance.toLocaleString('en-GB')}`;
+      document.getElementById('displaySavings').textContent = `£${savingsBalance.toLocaleString('en-GB')}`;
+      document.getElementById('chargedBalance').textContent = `£${effectiveBalance.toLocaleString('en-GB')}`;
+
+      // Comparison table
+      document.getElementById('normalPayment').textContent = `£${normalPayment.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('offsetPayment').textContent = `£${offsetPayment.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('paymentSaving').textContent = `£${(normalPayment - offsetPayment).toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+
+      document.getElementById('normalInterest').textContent = `£${normalAnnualInterest.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('offsetInterest').textContent = `£${offsetAnnualInterest.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('interestSaving').textContent = `£${annualInterestSaving.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+
+      document.getElementById('savingsIncome').textContent = `£${netSavingsIncome.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('netBenefit').textContent = `£${netAnnualBenefit.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('offsetForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calculateOffset();
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

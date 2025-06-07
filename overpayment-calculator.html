@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mortgage overpayment calculator UK. See how much you can save on interest and reduce your mortgage term with extra payments.">
+  <title>Mortgage Overpayment Calculator UK - Calculate Interest Savings</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4865020440728085" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    .navbar { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .calculator-container {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    .result-container {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+    }
+    .savings-highlight {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="/index.html">UK Mortgage</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/faq.html">FAQs</a></li>
+          <li class="nav-item"><a class="nav-link" href="/privacy.html">Privacy</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog/index.html">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="calculator-container p-4 p-md-5">
+          <h1 class="text-center mb-4">Mortgage Overpayment Calculator</h1>
+          <p class="text-center text-muted mb-5">Calculate how much you can save with mortgage overpayments</p>
+          
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <form id="overpaymentForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="mortgageBalance" class="form-label">Current Mortgage Balance (£)</label>
+                <input type="number" class="form-control" id="mortgageBalance" placeholder="200000" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="interestRate" class="form-label">Interest Rate (%)</label>
+                <input type="number" class="form-control" id="interestRate" step="0.01" value="5.5" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="remainingTerm" class="form-label">Remaining Term (Years)</label>
+                <input type="number" class="form-control" id="remainingTerm" placeholder="20" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="monthlyOverpayment" class="form-label">Monthly Overpayment (£)</label>
+                <input type="number" class="form-control" id="monthlyOverpayment" placeholder="200" required>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg px-5">Calculate Savings</button>
+            </div>
+          </form>
+
+          <div id="results" class="result-container p-4 mt-4" style="display: none;">
+            <div class="savings-highlight p-4 mb-4 text-center">
+              <h3 class="mb-2">Total Interest Savings</h3>
+              <h2 class="mb-0" id="totalSavings">£0</h2>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Time Saved</h4>
+                    <p class="h4 text-success mb-0" id="timeSaved">0 years</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">New Mortgage Term</h4>
+                    <p class="h4 text-primary mb-0" id="newTerm">0 years</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-4">
+              <h4 class="h6 mb-3">Comparison</h4>
+              <div class="table-responsive">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Without Overpayments</th>
+                      <th>With Overpayments</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Monthly Payment</strong></td>
+                      <td id="standardPayment">£0</td>
+                      <td id="overpaymentPayment">£0</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Total Interest</strong></td>
+                      <td id="standardInterest">£0</td>
+                      <td id="overpaymentInterest">£0</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Mortgage Term</strong></td>
+                      <td id="standardTerm">0 years</td>
+                      <td id="overpaymentTerm">0 years</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <div class="mt-5">
+            <h3 class="h5 mb-3">Benefits of Mortgage Overpayments</h3>
+            <ul>
+              <li><strong>Interest Savings:</strong> Reduce total interest paid over the mortgage term</li>
+              <li><strong>Early Freedom:</strong> Pay off your mortgage years earlier</li>
+              <li><strong>Increased Equity:</strong> Build equity in your property faster</li>
+              <li><strong>Flexibility:</strong> Most lenders allow overpayments up to 10% annually</li>
+            </ul>
+            <p><strong>Related:</strong> Learn about <a href="/blog/remortgaging-2025.html" class="text-decoration-none">remortgaging strategies</a> and <a href="/blog/mortgage-calculator-guide.html" class="text-decoration-none">mortgage planning</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>UK Mortgage Calculator</h5>
+          <p class="text-muted">Expert mortgage calculators and advice.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">© 2025 UK Mortgage Calculator. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mortgage Overpayment Calculator",
+    "description": "Calculate mortgage overpayment benefits and interest savings",
+    "url": "https://mortagagecalculator.co.uk/overpayment-calculator.html",
+    "applicationCategory": "FinanceApplication"
+  }
+  </script>
+
+  <script>
+    function calculateOverpaymentSavings() {
+      const balance = parseFloat(document.getElementById('mortgageBalance').value);
+      const rate = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
+      const term = parseFloat(document.getElementById('remainingTerm').value) * 12;
+      const overpayment = parseFloat(document.getElementById('monthlyOverpayment').value);
+
+      // Calculate standard mortgage payment
+      const x = Math.pow(1 + rate, term);
+      const standardPayment = (balance * x * rate) / (x - 1);
+      const standardTotalInterest = (standardPayment * term) - balance;
+
+      // Calculate with overpayments
+      const newPayment = standardPayment + overpayment;
+      
+      // Calculate how long it takes to pay off with overpayments
+      const newTerm = Math.log(1 + (balance * rate) / newPayment) / Math.log(1 + rate);
+      const newTermYears = newTerm / 12;
+      
+      const overpaymentTotalInterest = (newPayment * newTerm) - balance;
+      const totalSavings = standardTotalInterest - overpaymentTotalInterest;
+      const timeSaved = (term - newTerm) / 12;
+
+      // Display results
+      document.getElementById('totalSavings').textContent = `£${totalSavings.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('timeSaved').textContent = `${timeSaved.toFixed(1)} years`;
+      document.getElementById('newTerm').textContent = `${newTermYears.toFixed(1)} years`;
+      
+      document.getElementById('standardPayment').textContent = `£${standardPayment.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('overpaymentPayment').textContent = `£${newPayment.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('standardInterest').textContent = `£${standardTotalInterest.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('overpaymentInterest').textContent = `£${overpaymentTotalInterest.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('standardTerm').textContent = `${(term/12).toFixed(0)} years`;
+      document.getElementById('overpaymentTerm').textContent = `${newTermYears.toFixed(1)} years`;
+
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('overpaymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calculateOverpaymentSavings();
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

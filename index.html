@@ -75,6 +75,18 @@
           <li class="nav-item">
             <a class="nav-link" href="/index.html">Home</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Calculators
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="calculatorDropdown">
+              <li><a class="dropdown-item" href="/index.html">Mortgage Calculator</a></li>
+              <li><a class="dropdown-item" href="/affordability-calculator.html">Affordability Calculator</a></li>
+              <li><a class="dropdown-item" href="/stamp-duty-calculator.html">Stamp Duty Calculator</a></li>
+              <li><a class="dropdown-item" href="/overpayment-calculator.html">Overpayment Calculator</a></li>
+              <li><a class="dropdown-item" href="/buy-to-let-calculator.html">Buy-to-Let Calculator</a></li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/about.html">About</a>
           </li>
@@ -189,7 +201,8 @@
               <div class="col-md-12">
                 <div class="info-card p-4 bg-light">
                   <h3 class="h5 mb-3">What is a mortgage?</h3>
-                  <p class="mb-0">A mortgage is a loan used to purchase property. Your lender provides the funds, and you repay monthly over a set term, including interest. The property serves as collateral for the loan, which means if you fail to make repayments, the lender can repossess the property.</p>
+                  <p class="mb-3">A mortgage is a loan used to purchase property. Your lender provides the funds, and you repay monthly over a set term, including interest. The property serves as collateral for the loan, which means if you fail to make repayments, the lender can repossess the property.</p>
+                  <p class="mb-0"><strong>Learn more:</strong> Read our guides on <a href="/blog/first-time-buyer-guide.html" class="text-decoration-none">buying your first home</a>, <a href="/blog/remortgaging-2025.html" class="text-decoration-none">remortgaging strategies</a>, and <a href="/blog/mortgage-calculator-guide.html" class="text-decoration-none">how to use mortgage calculators effectively</a>.</p>
                 </div>
               </div>
             </div>
@@ -334,6 +347,34 @@
         calculateMortgage();
       }
     });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "UK Mortgage Calculator",
+    "url": "https://mortagagecalculator.co.uk",
+    "logo": "https://mortagagecalculator.co.uk/images/logo.png",
+    "description": "Free UK mortgage calculator to estimate your monthly repayments, total interest, and more. Simple, fast, and accurate mortgage calculations.",
+    "sameAs": [
+      "https://twitter.com/ukmortgagecalc",
+      "https://facebook.com/ukmortgagecalculator"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "url": "https://mortagagecalculator.co.uk/contact.html"
+    },
+    "areaServed": "GB",
+    "knowsAbout": [
+      "Mortgage Calculations",
+      "UK Property Finance",
+      "Interest Rate Analysis",
+      "First Time Buyer Advice",
+      "Remortgaging"
+    ]
+  }
   </script>
 </body>
 </html>

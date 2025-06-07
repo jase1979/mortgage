@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LTV calculator UK. Calculate loan-to-value ratio for mortgages and understand how it affects rates and deposit requirements.">
+  <title>LTV Calculator UK - Loan-to-Value Ratio & Mortgage Rates</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4865020440728085" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    .navbar { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .calculator-container {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    .ltv-highlight {
+      background: linear-gradient(135deg, #17a2b8, #007bff);
+      color: white;
+      border-radius: 8px;
+    }
+    .ltv-bands {
+      background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+      border-radius: 8px;
+    }
+    .ltv-band {
+      border-radius: 6px;
+      margin-bottom: 10px;
+      padding: 10px;
+      transition: all 0.3s ease;
+    }
+    .ltv-band.active {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
+    }
+    .ltv-excellent { background-color: #d4edda; border-left: 4px solid #28a745; }
+    .ltv-very-good { background-color: #d1ecf1; border-left: 4px solid #17a2b8; }
+    .ltv-good { background-color: #fff3cd; border-left: 4px solid #ffc107; }
+    .ltv-fair { background-color: #f8d7da; border-left: 4px solid #dc3545; }
+    .ltv-poor { background-color: #f5c6cb; border-left: 4px solid #721c24; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="/index.html">UK Mortgage</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-bs-toggle="dropdown">Calculators</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/affordability-calculator.html">Affordability Calculator</a></li>
+              <li><a class="dropdown-item" href="/stamp-duty-calculator.html">Stamp Duty Calculator</a></li>
+              <li><a class="dropdown-item" href="/overpayment-calculator.html">Overpayment Calculator</a></li>
+              <li><a class="dropdown-item" href="/buy-to-let-calculator.html">Buy-to-Let Calculator</a></li>
+              <li><a class="dropdown-item" href="/remortgage-calculator.html">Remortgage Calculator</a></li>
+              <li><a class="dropdown-item" href="/help-to-buy-calculator.html">Help to Buy Calculator</a></li>
+              <li><a class="dropdown-item" href="/offset-mortgage-calculator.html">Offset Calculator</a></li>
+              <li><a class="dropdown-item" href="/interest-only-calculator.html">Interest-Only Calculator</a></li>
+              <li><a class="dropdown-item" href="/early-repayment-charge-calculator.html">ERC Calculator</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/blog/index.html">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="calculator-container p-4 p-md-5">
+          <h1 class="text-center mb-4">LTV Calculator</h1>
+          <p class="text-center text-muted mb-5">Calculate your loan-to-value ratio and discover available mortgage rates</p>
+          
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <form id="ltvForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="propertyValue" class="form-label">Property Value (£)</label>
+                <input type="number" class="form-control" id="propertyValue" placeholder="350000" required>
+                <small class="text-muted">Current market value or purchase price</small>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="mortgageAmount" class="form-label">Mortgage Amount (£)</label>
+                <input type="number" class="form-control" id="mortgageAmount" placeholder="280000" required>
+                <small class="text-muted">Amount you want to borrow</small>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="deposit" class="form-label">Deposit (£)</label>
+                <input type="number" class="form-control" id="deposit" placeholder="70000">
+                <small class="text-muted">Will be calculated automatically</small>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="mortgageType" class="form-label">Mortgage Type</label>
+                <select class="form-select" id="mortgageType">
+                  <option value="residential">Residential</option>
+                  <option value="buy-to-let">Buy-to-Let</option>
+                  <option value="remortgage">Remortgage</option>
+                  <option value="first-time-buyer">First-Time Buyer</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg px-5">Calculate LTV</button>
+            </div>
+          </form>
+
+          <div id="results" class="mt-4" style="display: none;">
+            <div class="ltv-highlight p-4 mb-4 text-center">
+              <h3 class="mb-2">Your Loan-to-Value Ratio</h3>
+              <h2 class="mb-0" id="ltvRatio">0%</h2>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Loan Amount</h4>
+                    <p class="h4 text-primary mb-0" id="displayLoan">£0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Deposit Required</h4>
+                    <p class="h4 text-success mb-0" id="displayDeposit">£0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Equity/Deposit %</h4>
+                    <p class="h4 text-info mb-0" id="equityPercentage">0%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ltv-bands p-4 mb-4">
+              <h4 class="h6 mb-3">LTV Bands & Typical Rates</h4>
+              <div class="ltv-band ltv-excellent" id="band-60">
+                <div class="row">
+                  <div class="col-md-3"><strong>≤60% LTV</strong></div>
+                  <div class="col-md-3">Excellent</div>
+                  <div class="col-md-3">Best rates from 4.5%</div>
+                  <div class="col-md-3">Most choice</div>
+                </div>
+              </div>
+              <div class="ltv-band ltv-very-good" id="band-75">
+                <div class="row">
+                  <div class="col-md-3"><strong>60-75% LTV</strong></div>
+                  <div class="col-md-3">Very Good</div>
+                  <div class="col-md-3">Rates from 4.7%</div>
+                  <div class="col-md-3">Wide choice</div>
+                </div>
+              </div>
+              <div class="ltv-band ltv-good" id="band-85">
+                <div class="row">
+                  <div class="col-md-3"><strong>75-85% LTV</strong></div>
+                  <div class="col-md-3">Good</div>
+                  <div class="col-md-3">Rates from 5.0%</div>
+                  <div class="col-md-3">Good choice</div>
+                </div>
+              </div>
+              <div class="ltv-band ltv-fair" id="band-90">
+                <div class="row">
+                  <div class="col-md-3"><strong>85-90% LTV</strong></div>
+                  <div class="col-md-3">Fair</div>
+                  <div class="col-md-3">Rates from 5.5%</div>
+                  <div class="col-md-3">Limited choice</div>
+                </div>
+              </div>
+              <div class="ltv-band ltv-poor" id="band-95">
+                <div class="row">
+                  <div class="col-md-3"><strong>90-95% LTV</strong></div>
+                  <div class="col-md-3">High LTV</div>
+                  <div class="col-md-3">Rates from 6.0%</div>
+                  <div class="col-md-3">Very limited</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-4">
+              <h4 class="h6 mb-3">LTV Impact Analysis</h4>
+              <div id="ltvAdvice" class="alert mb-3"></div>
+              <div class="table-responsive">
+                <table class="table table-sm">
+                  <tbody>
+                    <tr>
+                      <td><strong>Mortgage Insurance Required</strong></td>
+                      <td id="mortgageInsurance">No</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Estimated Rate Range</strong></td>
+                      <td id="rateRange">4.5% - 5.5%</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Lender Choice</strong></td>
+                      <td id="lenderChoice">Excellent</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Deposit to Next Band</strong></td>
+                      <td id="nextBandDeposit">-</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <h4 class="h6 mb-3">Improve Your LTV</h4>
+              <div class="row">
+                <div class="col-md-6">
+                  <h5 class="h6">Increase Deposit</h5>
+                  <div class="mb-2">
+                    <label class="form-label small">Additional Deposit (£)</label>
+                    <input type="number" class="form-control form-control-sm" id="additionalDeposit" placeholder="10000">
+                  </div>
+                  <button class="btn btn-sm btn-outline-primary" onclick="calculateImprovedLTV()">Calculate Impact</button>
+                </div>
+                <div class="col-md-6">
+                  <div id="improvementResult" class="mt-3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <div class="mt-5">
+            <h3 class="h5 mb-3">Understanding Loan-to-Value (LTV)</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <h4 class="h6">What is LTV?</h4>
+                <p class="small">LTV is the percentage of the property value you're borrowing. Lower LTV means:</p>
+                <ul class="small">
+                  <li>Lower interest rates</li>
+                  <li>More lender choice</li>
+                  <li>Better mortgage terms</li>
+                  <li>Lower monthly payments</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h4 class="h6">Key LTV Thresholds</h4>
+                <ul class="small">
+                  <li><strong>60% LTV:</strong> Best rates and terms</li>
+                  <li><strong>75% LTV:</strong> Still excellent rates</li>
+                  <li><strong>85% LTV:</strong> Good rates available</li>
+                  <li><strong>90% LTV:</strong> Higher rates, fewer options</li>
+                  <li><strong>95% LTV:</strong> Limited choice, highest rates</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <h4 class="h6">For Remortgaging</h4>
+                <p class="small">Your LTV may have improved if:</p>
+                <ul class="small">
+                  <li>Property value has increased</li>
+                  <li>You've paid down the mortgage</li>
+                  <li>You've made overpayments</li>
+                  <li>Home improvements added value</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h4 class="h6">Special Schemes</h4>
+                <ul class="small">
+                  <li><strong>First-Time Buyers:</strong> 95% LTV available</li>
+                  <li><strong>Help to Buy:</strong> Effective higher LTV</li>
+                  <li><strong>Shared Ownership:</strong> Lower effective LTV</li>
+                  <li><strong>Guarantor Mortgages:</strong> May exceed 95%</li>
+                </ul>
+              </div>
+            </div>
+            <p><strong>Related:</strong> Use our <a href="/affordability-calculator.html" class="text-decoration-none">affordability calculator</a> and <a href="/stamp-duty-calculator.html" class="text-decoration-none">stamp duty calculator</a> for complete property costs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>UK Mortgage Calculator</h5>
+          <p class="text-muted">Expert mortgage calculators and advice.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">© 2025 UK Mortgage Calculator. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "LTV Calculator",
+    "description": "Calculate loan-to-value ratio and understand mortgage rate implications",
+    "url": "https://mortagagecalculator.co.uk/ltv-calculator.html",
+    "applicationCategory": "FinanceApplication"
+  }
+  </script>
+
+  <script>
+    // Auto-calculate deposit when mortgage amount changes
+    document.getElementById('mortgageAmount').addEventListener('input', function() {
+      const propertyValue = parseFloat(document.getElementById('propertyValue').value) || 0;
+      const mortgageAmount = parseFloat(this.value) || 0;
+      const deposit = propertyValue - mortgageAmount;
+      
+      if (deposit >= 0) {
+        document.getElementById('deposit').value = deposit;
+      }
+    });
+
+    // Auto-calculate mortgage amount when deposit changes
+    document.getElementById('deposit').addEventListener('input', function() {
+      const propertyValue = parseFloat(document.getElementById('propertyValue').value) || 0;
+      const deposit = parseFloat(this.value) || 0;
+      const mortgageAmount = propertyValue - deposit;
+      
+      if (mortgageAmount >= 0) {
+        document.getElementById('mortgageAmount').value = mortgageAmount;
+      }
+    });
+
+    function calculateLTV() {
+      const propertyValue = parseFloat(document.getElementById('propertyValue').value);
+      const mortgageAmount = parseFloat(document.getElementById('mortgageAmount').value);
+      const mortgageType = document.getElementById('mortgageType').value;
+      
+      const deposit = propertyValue - mortgageAmount;
+      const ltvRatio = (mortgageAmount / propertyValue) * 100;
+      const equityRatio = (deposit / propertyValue) * 100;
+
+      // Display basic results
+      document.getElementById('ltvRatio').textContent = `${ltvRatio.toFixed(1)}%`;
+      document.getElementById('displayLoan').textContent = `£${mortgageAmount.toLocaleString('en-GB')}`;
+      document.getElementById('displayDeposit').textContent = `£${deposit.toLocaleString('en-GB')}`;
+      document.getElementById('equityPercentage').textContent = `${equityRatio.toFixed(1)}%`;
+
+      // Highlight appropriate LTV band
+      document.querySelectorAll('.ltv-band').forEach(band => band.classList.remove('active'));
+      
+      let activeBand, advice, rateRange, lenderChoice, mortgageInsurance;
+      
+      if (ltvRatio <= 60) {
+        document.getElementById('band-60').classList.add('active');
+        advice = 'Excellent LTV ratio! You\'ll have access to the best mortgage rates and widest choice of lenders.';
+        rateRange = '4.5% - 5.0%';
+        lenderChoice = 'Excellent - all lenders available';
+        mortgageInsurance = 'No';
+      } else if (ltvRatio <= 75) {
+        document.getElementById('band-75').classList.add('active');
+        advice = 'Very good LTV ratio. You\'ll still get competitive rates with good lender choice.';
+        rateRange = '4.7% - 5.3%';
+        lenderChoice = 'Very Good - most lenders available';
+        mortgageInsurance = 'No';
+      } else if (ltvRatio <= 85) {
+        document.getElementById('band-85').classList.add('active');
+        advice = 'Good LTV ratio. Rates will be slightly higher but still competitive with decent choice.';
+        rateRange = '5.0% - 5.8%';
+        lenderChoice = 'Good - many lenders available';
+        mortgageInsurance = 'No';
+      } else if (ltvRatio <= 90) {
+        document.getElementById('band-90').classList.add('active');
+        advice = 'Higher LTV ratio. Expect higher rates and more limited lender choice.';
+        rateRange = '5.5% - 6.5%';
+        lenderChoice = 'Limited - fewer lenders available';
+        mortgageInsurance = mortgageType === 'residential' ? 'Possibly required' : 'No';
+      } else {
+        document.getElementById('band-95').classList.add('active');
+        advice = 'Very high LTV ratio. Rates will be significantly higher with very limited choice.';
+        rateRange = '6.0% - 7.5%';
+        lenderChoice = 'Very Limited - specialist lenders mainly';
+        mortgageInsurance = mortgageType === 'residential' ? 'Usually required' : 'No';
+      }
+
+      // Calculate deposit needed for next band
+      let nextBandDeposit = '-';
+      if (ltvRatio > 90) {
+        const neededDeposit = (propertyValue * 0.1) - deposit;
+        nextBandDeposit = `£${neededDeposit.toLocaleString('en-GB')} for 90% LTV`;
+      } else if (ltvRatio > 85) {
+        const neededDeposit = (propertyValue * 0.15) - deposit;
+        nextBandDeposit = `£${neededDeposit.toLocaleString('en-GB')} for 85% LTV`;
+      } else if (ltvRatio > 75) {
+        const neededDeposit = (propertyValue * 0.25) - deposit;
+        nextBandDeposit = `£${neededDeposit.toLocaleString('en-GB')} for 75% LTV`;
+      } else if (ltvRatio > 60) {
+        const neededDeposit = (propertyValue * 0.4) - deposit;
+        nextBandDeposit = `£${neededDeposit.toLocaleString('en-GB')} for 60% LTV`;
+      }
+
+      // Display advice and details
+      const adviceElement = document.getElementById('ltvAdvice');
+      if (ltvRatio <= 75) {
+        adviceElement.className = 'alert alert-success mb-3';
+        adviceElement.innerHTML = `<i class="fas fa-check-circle me-2"></i>${advice}`;
+      } else if (ltvRatio <= 85) {
+        adviceElement.className = 'alert alert-info mb-3';
+        adviceElement.innerHTML = `<i class="fas fa-info-circle me-2"></i>${advice}`;
+      } else {
+        adviceElement.className = 'alert alert-warning mb-3';
+        adviceElement.innerHTML = `<i class="fas fa-exclamation-triangle me-2"></i>${advice}`;
+      }
+
+      document.getElementById('mortgageInsurance').textContent = mortgageInsurance;
+      document.getElementById('rateRange').textContent = rateRange;
+      document.getElementById('lenderChoice').textContent = lenderChoice;
+      document.getElementById('nextBandDeposit').textContent = nextBandDeposit;
+
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function calculateImprovedLTV() {
+      const propertyValue = parseFloat(document.getElementById('propertyValue').value);
+      const currentDeposit = parseFloat(document.getElementById('deposit').value);
+      const additionalDeposit = parseFloat(document.getElementById('additionalDeposit').value) || 0;
+      
+      const newDeposit = currentDeposit + additionalDeposit;
+      const newMortgageAmount = propertyValue - newDeposit;
+      const newLtvRatio = (newMortgageAmount / propertyValue) * 100;
+      const currentLtvRatio = parseFloat(document.getElementById('ltvRatio').textContent);
+
+      let improvement = '';
+      if (newLtvRatio <= 60 && currentLtvRatio > 60) {
+        improvement = 'Moves you to the best rate band (≤60% LTV)';
+      } else if (newLtvRatio <= 75 && currentLtvRatio > 75) {
+        improvement = 'Moves you to very good rate band (≤75% LTV)';
+      } else if (newLtvRatio <= 85 && currentLtvRatio > 85) {
+        improvement = 'Moves you to good rate band (≤85% LTV)';
+      } else if (newLtvRatio <= 90 && currentLtvRatio > 90) {
+        improvement = 'Reduces LTV to manageable level (≤90% LTV)';
+      } else {
+        improvement = `Reduces LTV by ${(currentLtvRatio - newLtvRatio).toFixed(1)}%`;
+      }
+
+      document.getElementById('improvementResult').innerHTML = `
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title">With Additional £${additionalDeposit.toLocaleString('en-GB')} Deposit:</h6>
+            <p class="card-text">
+              <strong>New LTV:</strong> ${newLtvRatio.toFixed(1)}%<br>
+              <strong>Impact:</strong> ${improvement}
+            </p>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById('ltvForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calculateLTV();
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

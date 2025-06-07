@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Help to Buy calculator UK. Calculate your deposit requirements, government loan, and mortgage payments for Help to Buy schemes.">
+  <title>Help to Buy Calculator UK - Equity Loan & Shared Ownership</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4865020440728085" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    .navbar { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .calculator-container {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    .scheme-highlight {
+      background: linear-gradient(135deg, #6f42c1, #007bff);
+      color: white;
+      border-radius: 8px;
+    }
+    .breakdown-card { border-left: 4px solid #007bff; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="/index.html">UK Mortgage</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="calculatorDropdown" role="button" data-bs-toggle="dropdown">Calculators</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/affordability-calculator.html">Affordability Calculator</a></li>
+              <li><a class="dropdown-item" href="/stamp-duty-calculator.html">Stamp Duty Calculator</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/blog/index.html">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="calculator-container p-4 p-md-5">
+          <h1 class="text-center mb-4">Help to Buy Calculator</h1>
+          <p class="text-center text-muted mb-5">Calculate your deposit and mortgage requirements for government home buying schemes</p>
+          
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <form id="helpToBuyForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="propertyPrice" class="form-label">Property Price (£)</label>
+                <input type="number" class="form-control" id="propertyPrice" placeholder="400000" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="scheme" class="form-label">Help to Buy Scheme</label>
+                <select class="form-select" id="scheme" required>
+                  <option value="equity-loan">Equity Loan (20% government loan)</option>
+                  <option value="equity-loan-london">Equity Loan London (40% government loan)</option>
+                  <option value="shared-ownership-25">Shared Ownership (25% share)</option>
+                  <option value="shared-ownership-50">Shared Ownership (50% share)</option>
+                  <option value="shared-ownership-75">Shared Ownership (75% share)</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="deposit" class="form-label">Your Deposit (£)</label>
+                <input type="number" class="form-control" id="deposit" placeholder="20000" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="interestRate" class="form-label">Mortgage Interest Rate (%)</label>
+                <input type="number" class="form-control" id="interestRate" step="0.01" value="5.5" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="mortgageTerm" class="form-label">Mortgage Term (Years)</label>
+                <input type="number" class="form-control" id="mortgageTerm" value="25" required>
+              </div>
+              <div class="col-md-6 mb-3" id="rentField" style="display: none;">
+                <label for="monthlyRent" class="form-label">Monthly Rent on Unsold Share (£)</label>
+                <input type="number" class="form-control" id="monthlyRent" placeholder="800">
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg px-5">Calculate Help to Buy</button>
+            </div>
+          </form>
+
+          <div id="results" class="mt-4" style="display: none;">
+            <div class="scheme-highlight p-4 mb-4 text-center">
+              <h3 class="mb-2">Monthly Payment</h3>
+              <h2 class="mb-0" id="totalMonthlyPayment">£0</h2>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Mortgage Payment</h4>
+                    <p class="h4 text-primary mb-0" id="mortgagePayment">£0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Required Mortgage</h4>
+                    <p class="h4 text-success mb-0" id="mortgageAmount">£0</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="breakdown-card bg-light p-4 mt-4">
+              <h4 class="h6 mb-3">Purchase Breakdown</h4>
+              <div class="table-responsive">
+                <table class="table table-sm mb-0">
+                  <tbody>
+                    <tr>
+                      <td><strong>Property Price</strong></td>
+                      <td class="text-end" id="displayPrice">£0</td>
+                    </tr>
+                    <tr>
+                      <td>Your Deposit</td>
+                      <td class="text-end" id="displayDeposit">£0</td>
+                    </tr>
+                    <tr>
+                      <td>Government Contribution</td>
+                      <td class="text-end text-success" id="governmentLoan">£0</td>
+                    </tr>
+                    <tr>
+                      <td>Mortgage Required</td>
+                      <td class="text-end text-primary" id="displayMortgage">£0</td>
+                    </tr>
+                    <tr id="rentRow" style="display: none;">
+                      <td>Monthly Rent (Unsold Share)</td>
+                      <td class="text-end text-warning" id="displayRent">£0</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            
+            <div class="mt-4">
+              <h4 class="h6 mb-3">Important Notes</h4>
+              <div id="schemeNotes"></div>
+            </div>
+          </div>
+
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <div class="mt-5">
+            <h3 class="h5 mb-3">Help to Buy Schemes Explained</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <h4 class="h6">Equity Loan</h4>
+                <ul class="small">
+                  <li>20% government loan (40% in London)</li>
+                  <li>Interest-free for first 5 years</li>
+                  <li>Must repay when selling or after 25 years</li>
+                  <li>Available on new-build properties only</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h4 class="h6">Shared Ownership</h4>
+                <ul class="small">
+                  <li>Buy 25-75% share initially</li>
+                  <li>Pay rent on remaining share</li>
+                  <li>Can buy additional shares later</li>
+                  <li>Available on new and resale properties</li>
+                </ul>
+              </div>
+            </div>
+            <p><strong>Related:</strong> Read our <a href="/blog/first-time-buyer-guide.html" class="text-decoration-none">first-time buyer guide</a> and <a href="/affordability-calculator.html" class="text-decoration-none">affordability calculator</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>UK Mortgage Calculator</h5>
+          <p class="text-muted">Expert mortgage calculators and advice.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">© 2025 UK Mortgage Calculator. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Help to Buy Calculator",
+    "description": "Calculate Help to Buy equity loan and shared ownership requirements",
+    "url": "https://mortagagecalculator.co.uk/help-to-buy-calculator.html",
+    "applicationCategory": "FinanceApplication"
+  }
+  </script>
+
+  <script>
+    document.getElementById('scheme').addEventListener('change', function() {
+      const scheme = this.value;
+      const rentField = document.getElementById('rentField');
+      
+      if (scheme.includes('shared-ownership')) {
+        rentField.style.display = 'block';
+      } else {
+        rentField.style.display = 'none';
+      }
+    });
+
+    function calculateHelpToBuy() {
+      const propertyPrice = parseFloat(document.getElementById('propertyPrice').value);
+      const deposit = parseFloat(document.getElementById('deposit').value);
+      const scheme = document.getElementById('scheme').value;
+      const interestRate = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
+      const mortgageTerm = parseFloat(document.getElementById('mortgageTerm').value) * 12;
+      const monthlyRent = parseFloat(document.getElementById('monthlyRent').value) || 0;
+
+      let governmentContribution = 0;
+      let purchasePrice = propertyPrice;
+      let notes = '';
+
+      switch(scheme) {
+        case 'equity-loan':
+          governmentContribution = propertyPrice * 0.20;
+          notes = '<ul><li>20% equity loan from government</li><li>Interest-free for first 5 years</li><li>Must repay proportional amount when selling</li></ul>';
+          break;
+        case 'equity-loan-london':
+          governmentContribution = propertyPrice * 0.40;
+          notes = '<ul><li>40% equity loan from government (London only)</li><li>Interest-free for first 5 years</li><li>Must repay proportional amount when selling</li></ul>';
+          break;
+        case 'shared-ownership-25':
+          purchasePrice = propertyPrice * 0.25;
+          notes = '<ul><li>You own 25% of the property</li><li>Pay rent on remaining 75%</li><li>Can buy more shares later (staircasing)</li></ul>';
+          break;
+        case 'shared-ownership-50':
+          purchasePrice = propertyPrice * 0.50;
+          notes = '<ul><li>You own 50% of the property</li><li>Pay rent on remaining 50%</li><li>Can buy more shares later (staircasing)</li></ul>';
+          break;
+        case 'shared-ownership-75':
+          purchasePrice = propertyPrice * 0.75;
+          notes = '<ul><li>You own 75% of the property</li><li>Pay rent on remaining 25%</li><li>Can buy more shares later (staircasing)</li></ul>';
+          break;
+      }
+
+      const mortgageRequired = purchasePrice - deposit - governmentContribution;
+      
+      // Calculate mortgage payment
+      let mortgagePayment = 0;
+      if (mortgageRequired > 0 && interestRate > 0) {
+        const x = Math.pow(1 + interestRate, mortgageTerm);
+        mortgagePayment = (mortgageRequired * x * interestRate) / (x - 1);
+      } else if (mortgageRequired > 0) {
+        mortgagePayment = mortgageRequired / mortgageTerm;
+      }
+
+      const totalMonthlyPayment = mortgagePayment + monthlyRent;
+
+      // Display results
+      document.getElementById('totalMonthlyPayment').textContent = `£${totalMonthlyPayment.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('mortgagePayment').textContent = `£${mortgagePayment.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('mortgageAmount').textContent = `£${mortgageRequired.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+
+      // Breakdown
+      document.getElementById('displayPrice').textContent = `£${propertyPrice.toLocaleString('en-GB')}`;
+      document.getElementById('displayDeposit').textContent = `£${deposit.toLocaleString('en-GB')}`;
+      document.getElementById('governmentLoan').textContent = `£${governmentContribution.toLocaleString('en-GB')}`;
+      document.getElementById('displayMortgage').textContent = `£${mortgageRequired.toLocaleString('en-GB')}`;
+      
+      if (monthlyRent > 0) {
+        document.getElementById('rentRow').style.display = 'table-row';
+        document.getElementById('displayRent').textContent = `£${monthlyRent.toLocaleString('en-GB')}`;
+      } else {
+        document.getElementById('rentRow').style.display = 'none';
+      }
+
+      document.getElementById('schemeNotes').innerHTML = notes;
+
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('helpToBuyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calculateHelpToBuy();
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

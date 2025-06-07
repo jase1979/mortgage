@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free UK stamp duty calculator 2025. Calculate stamp duty land tax for first-time buyers, additional properties, and commercial purchases.">
+  <title>Stamp Duty Calculator UK 2025 - SDLT Calculator</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4865020440728085" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    .navbar { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .calculator-container {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    .result-container {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .breakdown-table { font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="/index.html">UK Mortgage</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/faq.html">FAQs</a></li>
+          <li class="nav-item"><a class="nav-link" href="/privacy.html">Privacy</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog/index.html">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="calculator-container p-4 p-md-5">
+          <h1 class="text-center mb-4">Stamp Duty Calculator</h1>
+          <p class="text-center text-muted mb-5">Calculate your stamp duty land tax (SDLT) for property purchases in England and Northern Ireland</p>
+          
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <form id="stampDutyForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="propertyPrice" class="form-label">Property Price (£)</label>
+                <input type="number" class="form-control" id="propertyPrice" placeholder="300000" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="buyerType" class="form-label">Buyer Type</label>
+                <select class="form-select" id="buyerType" required>
+                  <option value="first-time">First-time buyer</option>
+                  <option value="home-mover">Home mover (main residence)</option>
+                  <option value="additional">Additional property/Buy-to-let</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg px-5">Calculate Stamp Duty</button>
+            </div>
+          </form>
+
+          <div id="results" class="result-container p-4 mt-4" style="display: none;">
+            <h3 class="text-center mb-4">Your Stamp Duty Calculation</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Total Stamp Duty</h4>
+                    <p class="h3 text-primary mb-0" id="totalStampDuty">£0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="card h-100 border-0 bg-light">
+                  <div class="card-body text-center">
+                    <h4 class="h6 text-muted">Effective Rate</h4>
+                    <p class="h3 text-primary mb-0" id="effectiveRate">0%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-4">
+              <h4 class="h6 mb-3">Stamp Duty Breakdown</h4>
+              <div class="table-responsive">
+                <table class="table table-sm breakdown-table">
+                  <thead>
+                    <tr>
+                      <th>Property Value Band</th>
+                      <th>Rate</th>
+                      <th>Tax on Band</th>
+                    </tr>
+                  </thead>
+                  <tbody id="breakdownTable">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4865020440728085"
+               data-ad-slot="XXXXXXXXX"
+               data-ad-format="auto"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+          <div class="mt-5">
+            <h3 class="h5 mb-3">Stamp Duty Rates 2025</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <h4 class="h6">Main Residence</h4>
+                <ul class="small">
+                  <li>Up to £250,000: 0%</li>
+                  <li>£250,001 - £925,000: 5%</li>
+                  <li>£925,001 - £1.5m: 10%</li>
+                  <li>Over £1.5m: 12%</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h4 class="h6">First-Time Buyers</h4>
+                <ul class="small">
+                  <li>Up to £425,000: 0%</li>
+                  <li>£425,001 - £625,000: 5%</li>
+                  <li>Over £625,000: Standard rates</li>
+                </ul>
+              </div>
+            </div>
+            <p class="small mt-3"><strong>Additional Property Surcharge:</strong> +3% on all bands</p>
+            <p><strong>Related:</strong> Learn about <a href="/blog/buy-to-let-opportunities.html" class="text-decoration-none">buy-to-let investment</a> and <a href="/blog/first-time-buyer-guide.html" class="text-decoration-none">first-time buying</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>UK Mortgage Calculator</h5>
+          <p class="text-muted">Expert mortgage calculators and advice.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">© 2025 UK Mortgage Calculator. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "UK Stamp Duty Calculator",
+    "description": "Calculate stamp duty land tax (SDLT) for property purchases in England and Northern Ireland",
+    "url": "https://mortagagecalculator.co.uk/stamp-duty-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "GBP"
+    }
+  }
+  </script>
+
+  <script>
+    function calculateStampDuty() {
+      const propertyPrice = parseFloat(document.getElementById('propertyPrice').value);
+      const buyerType = document.getElementById('buyerType').value;
+      
+      let rates, thresholds;
+      
+      if (buyerType === 'first-time' && propertyPrice <= 625000) {
+        // First-time buyer relief
+        thresholds = [425000, 625000, 925000, 1500000];
+        rates = [0, 5, 10, 12];
+      } else if (buyerType === 'additional') {
+        // Additional property with 3% surcharge
+        thresholds = [250000, 925000, 1500000];
+        rates = [3, 8, 13, 15];
+      } else {
+        // Standard rates for main residence
+        thresholds = [250000, 925000, 1500000];
+        rates = [0, 5, 10, 12];
+      }
+      
+      let totalTax = 0;
+      let breakdown = [];
+      let remainingValue = propertyPrice;
+      
+      for (let i = 0; i < thresholds.length; i++) {
+        const bandLimit = thresholds[i];
+        const rate = rates[i];
+        
+        if (remainingValue <= 0) break;
+        
+        let taxableInBand;
+        let bandDescription;
+        
+        if (i === 0) {
+          // First band
+          taxableInBand = Math.min(remainingValue, bandLimit);
+          bandDescription = `Up to £${bandLimit.toLocaleString()}`;
+        } else {
+          // Subsequent bands
+          const previousLimit = thresholds[i-1];
+          taxableInBand = Math.min(remainingValue, bandLimit - previousLimit);
+          bandDescription = `£${(previousLimit + 1).toLocaleString()} - £${bandLimit.toLocaleString()}`;
+        }
+        
+        const taxOnBand = taxableInBand * (rate / 100);
+        totalTax += taxOnBand;
+        
+        breakdown.push({
+          band: bandDescription,
+          rate: `${rate}%`,
+          tax: `£${taxOnBand.toLocaleString('en-GB', {maximumFractionDigits: 0})}`
+        });
+        
+        remainingValue -= taxableInBand;
+      }
+      
+      // Handle the top band if there's remaining value
+      if (remainingValue > 0) {
+        const topRate = rates[rates.length - 1];
+        const taxOnTopBand = remainingValue * (topRate / 100);
+        totalTax += taxOnTopBand;
+        
+        const previousLimit = thresholds[thresholds.length - 1];
+        breakdown.push({
+          band: `Over £${previousLimit.toLocaleString()}`,
+          rate: `${topRate}%`,
+          tax: `£${taxOnTopBand.toLocaleString('en-GB', {maximumFractionDigits: 0})}`
+        });
+      }
+      
+      const effectiveRate = (totalTax / propertyPrice) * 100;
+      
+      // Display results
+      document.getElementById('totalStampDuty').textContent = `£${totalTax.toLocaleString('en-GB', {maximumFractionDigits: 0})}`;
+      document.getElementById('effectiveRate').textContent = `${effectiveRate.toFixed(2)}%`;
+      
+      // Build breakdown table
+      const tableBody = document.getElementById('breakdownTable');
+      tableBody.innerHTML = '';
+      breakdown.forEach(row => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${row.band}</td>
+          <td>${row.rate}</td>
+          <td>${row.tax}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+      
+      document.getElementById('results').style.display = 'block';
+      document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('stampDutyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calculateStampDuty();
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
