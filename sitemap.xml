@@ -2,33 +2,128 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mortagagecalculator.co.uk/</loc>
-    <lastmod>2025-05-08</lastmod>
+    <lastmod>2026-02-18</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://mortagagecalculator.co.uk/blog/index.html</loc>
-    <lastmod>2025-05-08</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
     <loc>https://mortagagecalculator.co.uk/about.html</loc>
-    <lastmod>2025-05-08</lastmod>
+    <lastmod>2026-02-18</lastmod>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://mortagagecalculator.co.uk/contact.html</loc>
-    <lastmod>2025-05-08</lastmod>
+    <lastmod>2026-02-18</lastmod>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://mortagagecalculator.co.uk/privacy.html</loc>
-    <lastmod>2025-05-08</lastmod>
+    <lastmod>2026-02-18</lastmod>
     <priority>0.50</priority>
   </url>
   <url>
     <loc>https://mortagagecalculator.co.uk/faq.html</loc>
-    <lastmod>2025-05-08</lastmod>
+    <lastmod>2026-02-18</lastmod>
     <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/how-it-works.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/team.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.40</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/editorial-policy.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/affordability-calculator.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/stamp-duty-calculator.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/overpayment-calculator.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/buy-to-let-calculator.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/remortgage-calculator.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/help-to-buy-calculator.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/interest-only-calculator.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/ltv-calculator.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/offset-mortgage-calculator.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/early-repayment-charge-calculator.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/blog/index.html</loc>
+    <lastmod>2026-02-18</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/blog/green-mortgages.html</loc>
+    <lastmod>2025-05-14</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/blog/buy-to-let-opportunities.html</loc>
+    <lastmod>2025-05-13</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/blog/remortgaging-2025.html</loc>
+    <lastmod>2025-05-12</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/blog/first-time-buyer-guide.html</loc>
+    <lastmod>2025-05-11</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/blog/housing-market-rebound.html</loc>
+    <lastmod>2025-05-10</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://mortagagecalculator.co.uk/blog/mortgage-calculator-guide.html</loc>
+    <lastmod>2025-05-09</lastmod>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://mortagagecalculator.co.uk/blog/bank-of-england-rate-cut.html</loc>
@@ -59,90 +154,5 @@
     <loc>https://mortagagecalculator.co.uk/blog/hmrc-rate-adjustments.html</loc>
     <lastmod>2025-05-08</lastmod>
     <priority>0.60</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/blog/mortgage-calculator-guide.html</loc>
-    <lastmod>2025-05-09</lastmod>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/blog/housing-market-rebound.html</loc>
-    <lastmod>2025-05-10</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/blog/first-time-buyer-guide.html</loc>
-    <lastmod>2025-05-11</lastmod>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/blog/remortgaging-2025.html</loc>
-    <lastmod>2025-05-12</lastmod>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/blog/buy-to-let-opportunities.html</loc>
-    <lastmod>2025-05-13</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/blog/green-mortgages.html</loc>
-    <lastmod>2025-05-14</lastmod>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/affordability-calculator.html</loc>
-    <lastmod>2025-06-07</lastmod>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/stamp-duty-calculator.html</loc>
-    <lastmod>2025-06-07</lastmod>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/overpayment-calculator.html</loc>
-    <lastmod>2025-06-07</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/buy-to-let-calculator.html</loc>
-    <lastmod>2025-06-07</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/early-repayment-charge-calculator.html</loc>
-    <lastmod>2025-06-07</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/help-to-buy-calculator.html</loc>
-    <lastmod>2025-06-07</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/interest-only-calculator.html</loc>
-    <lastmod>2025-06-07</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/ltv-calculator.html</loc>
-    <lastmod>2025-06-07</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/offset-mortgage-calculator.html</loc>
-    <lastmod>2025-06-07</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/remortgage-calculator.html</loc>
-    <lastmod>2025-06-07</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://mortagagecalculator.co.uk/editorial-policy.html</loc>
-    <lastmod>2025-07-27</lastmod>
-    <priority>0.30</priority>
   </url>
 </urlset>

@@ -264,30 +264,6 @@
             </div>
           </div>
 
-          <!-- Reviews Section -->
-          <section class="mt-5">
-            <h3 class="h4 mb-4">What Our Users Say</h3>
-            <div class="row g-4">
-              <div class="col-md-6">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <p class="card-text">"This is the simplest and most intuitive mortgage calculator I've used. It helped me understand my options without any confusing jargon."</p>
-                    <footer class="blockquote-footer">Sarah J.</footer>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <p class="card-text">"A great tool for anyone looking to buy a home. The breakdown of costs is incredibly helpful, and the blog has some fantastic articles."</p>
-                    <footer class="blockquote-footer">Mark T.</footer>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-
           <!-- Additional Calculators Section -->
           <div class="mt-5">
             <h3 class="h4 mb-4">Additional Mortgage Calculators</h3>
@@ -408,7 +384,7 @@
           <p class="text-muted">A simple tool to help you plan your mortgage journey.</p>
         </div>
         <div class="col-md-6 text-md-end">
-          <p class="mb-0">© 2025 UK Mortgage Calculator. All rights reserved. | <a href="/editorial-policy.html" class="text-light">Editorial Policy</a></p>
+          <p class="mb-0">&copy; 2026 UK Mortgage Calculator. All rights reserved. | <a href="/editorial-policy.html" class="text-light">Editorial Policy</a></p>
         </div>
       </div>
     </div>
@@ -490,5 +466,32 @@
     ]
   }
   </script>
+  <!-- Cookie Consent Banner -->
+  <div id="cookieConsent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#2c3e50;color:#fff;padding:16px 20px;z-index:9999;font-size:14px;">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+      <p class="mb-0 me-3">We use cookies to improve your experience and serve relevant ads via Google AdSense. By clicking "Accept", you consent to the use of cookies. See our <a href="/privacy.html" style="color:#7ec8e3;">Privacy Policy</a> for details.</p>
+      <div class="d-flex gap-2">
+        <button onclick="acceptCookies()" class="btn btn-primary btn-sm">Accept</button>
+        <button onclick="rejectCookies()" class="btn btn-outline-light btn-sm">Reject</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var consent = localStorage.getItem('cookieConsent');
+      if(consent === null){
+        document.getElementById('cookieConsent').style.display='block';
+      }
+    })();
+    function acceptCookies(){
+      localStorage.setItem('cookieConsent','accepted');
+      document.getElementById('cookieConsent').style.display='none';
+    }
+    function rejectCookies(){
+      localStorage.setItem('cookieConsent','rejected');
+      document.getElementById('cookieConsent').style.display='none';
+    }
+  </script>
+
 </body>
 </html>

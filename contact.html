@@ -170,18 +170,6 @@
             </div>
           </section>
 
-          <!-- Company Information -->
-          <section class="mb-5">
-            <h2 class="h3 mb-4 text-center">Company Information</h2>
-            <div class="row">
-              <div class="col-md-12 text-center">
-                <p><strong>UK Mortgage Calculator Ltd</strong></p>
-                <p>123 High Street, London, E1 7PT</p>
-                <p>Company Registration Number: 12345678</p>
-              </div>
-            </div>
-          </section>
-
           <!-- Contact Form -->
           <section class="mb-5" id="contact-form">
             <h2 class="h3 mb-4 text-center">Send Us a Message</h2>
@@ -319,7 +307,7 @@
             <h2 class="h3 mb-4">Editorial Team</h2>
             <div class="row">
               <div class="col-md-12">
-                <p>If you have any questions or comments about our articles, please contact our editorial team at <a href="mailto:editorial@mortgagecalculator.co.uk">editorial@mortgagecalculator.co.uk</a>.</p>
+                <p>If you have any questions or comments about our articles, please contact our editorial team at <a href="mailto:admin@mortagagecalculator.co.uk">admin@mortagagecalculator.co.uk</a>.</p>
               </div>
             </div>
           </section>
@@ -339,7 +327,7 @@
           <p class="text-muted">A simple tool to help you plan your mortgage journey.</p>
         </div>
         <div class="col-md-6 text-md-end">
-          <p class="mb-0">© 2025 UK Mortgage Calculator. All rights reserved. | <a href="/editorial-policy.html" class="text-light">Editorial Policy</a></p>
+          <p class="mb-0">&copy; 2026 UK Mortgage Calculator. All rights reserved. | <a href="/editorial-policy.html" class="text-light">Editorial Policy</a></p>
         </div>
       </div>
     </div>
@@ -386,5 +374,32 @@
       });
     });
   </script>
+  <!-- Cookie Consent Banner -->
+  <div id="cookieConsent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#2c3e50;color:#fff;padding:16px 20px;z-index:9999;font-size:14px;">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+      <p class="mb-0 me-3">We use cookies to improve your experience and serve relevant ads via Google AdSense. By clicking "Accept", you consent to the use of cookies. See our <a href="/privacy.html" style="color:#7ec8e3;">Privacy Policy</a> for details.</p>
+      <div class="d-flex gap-2">
+        <button onclick="acceptCookies()" class="btn btn-primary btn-sm">Accept</button>
+        <button onclick="rejectCookies()" class="btn btn-outline-light btn-sm">Reject</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var consent = localStorage.getItem('cookieConsent');
+      if(consent === null){
+        document.getElementById('cookieConsent').style.display='block';
+      }
+    })();
+    function acceptCookies(){
+      localStorage.setItem('cookieConsent','accepted');
+      document.getElementById('cookieConsent').style.display='none';
+    }
+    function rejectCookies(){
+      localStorage.setItem('cookieConsent','rejected');
+      document.getElementById('cookieConsent').style.display='none';
+    }
+  </script>
+
 </body>
 </html>

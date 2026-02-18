@@ -140,34 +140,13 @@
             </div>
           </section>
 
-          <!-- Meet the Team -->
+          <!-- About the Founder -->
           <section class="mb-5">
-            <h2 class="h3 mb-4">Meet the Team</h2>
+            <h2 class="h3 mb-4">About the Founder</h2>
             <div class="row">
-              <div class="col-md-12 text-center">
-                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Jason" class="team-member-img mb-3">
-                <h3 class="h5">Jason</h3>
-                <p class="text-muted">Founder & Lead Developer</p>
-                <p>Jason is a software developer with a passion for making complex financial topics accessible to everyone. He started this website after experiencing his own frustrations with the mortgage process. When he's not coding, you can find him hiking with his dog or exploring the latest tech trends.</p>
-              </div>
-            </div>
-          </section>
-
-          <!-- Editorial Team -->
-          <section class="mb-5">
-            <h2 class="h3 mb-4">Editorial Team</h2>
-            <div class="row">
-              <div class="col-md-6 text-center">
-                <img src="https://images.pexels.com/photos/927451/pexels-photo-927451.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Jane" class="team-member-img mb-3">
-                <h3 class="h5">Jane</h3>
-                <p class="text-muted">Head of Content</p>
-                <p>Jane is a financial journalist with over 10 years of experience in the mortgage industry. She is passionate about helping people understand the complexities of the mortgage market.</p>
-              </div>
-              <div class="col-md-6 text-center">
-                <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="John" class="team-member-img mb-3">
-                <h3 class="h5">John</h3>
-                <p class="text-muted">Content Writer</p>
-                <p>John is a content writer with a background in finance. He is passionate about creating clear and concise content that helps people make informed financial decisions.</p>
+              <div class="col-md-12">
+                <p>UK Mortgage Calculator was created by Jason, a software developer who experienced first-hand the frustration of navigating the mortgage process. After spending hours trying to understand mortgage rates, affordability, and repayment options, he decided to build the tools he wished he had.</p>
+                <p>What started as a personal project has grown into a resource used by thousands of people across the UK looking to make sense of their mortgage options.</p>
               </div>
             </div>
           </section>
@@ -296,7 +275,7 @@
           <p class="text-muted">A simple tool to help you plan your mortgage journey.</p>
         </div>
         <div class="col-md-6 text-md-end">
-          <p class="mb-0">© 2025 UK Mortgage Calculator. All rights reserved. | <a href="/editorial-policy.html" class="text-light">Editorial Policy</a></p>
+          <p class="mb-0">&copy; 2026 UK Mortgage Calculator. All rights reserved. | <a href="/editorial-policy.html" class="text-light">Editorial Policy</a></p>
         </div>
       </div>
     </div>
@@ -312,7 +291,7 @@
       "name": "UK Mortgage Calculator",
       "url": "https://mortagagecalculator.co.uk",
       "description": "UK Mortgage Calculator provides accurate, easy-to-use tools that make understanding mortgage finances straightforward for homebuyers and homeowners.",
-      "foundingDate": "2024",
+      "foundingDate": "2020",
       "areaServed": "GB",
       "knowsAbout": [
         "Mortgage Calculations",
@@ -327,5 +306,32 @@
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <!-- Cookie Consent Banner -->
+  <div id="cookieConsent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#2c3e50;color:#fff;padding:16px 20px;z-index:9999;font-size:14px;">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+      <p class="mb-0 me-3">We use cookies to improve your experience and serve relevant ads via Google AdSense. By clicking "Accept", you consent to the use of cookies. See our <a href="/privacy.html" style="color:#7ec8e3;">Privacy Policy</a> for details.</p>
+      <div class="d-flex gap-2">
+        <button onclick="acceptCookies()" class="btn btn-primary btn-sm">Accept</button>
+        <button onclick="rejectCookies()" class="btn btn-outline-light btn-sm">Reject</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var consent = localStorage.getItem('cookieConsent');
+      if(consent === null){
+        document.getElementById('cookieConsent').style.display='block';
+      }
+    })();
+    function acceptCookies(){
+      localStorage.setItem('cookieConsent','accepted');
+      document.getElementById('cookieConsent').style.display='none';
+    }
+    function rejectCookies(){
+      localStorage.setItem('cookieConsent','rejected');
+      document.getElementById('cookieConsent').style.display='none';
+    }
+  </script>
+
 </body>
 </html>

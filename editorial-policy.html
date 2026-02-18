@@ -9,7 +9,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4865020440728085" crossorigin="anonymous"></script>  <style>
     body {
       background-color: #f8f9fa;
       font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -102,7 +102,7 @@
           <!-- Corrections -->
           <section class="mb-5">
             <h2 class="h3 mb-4">Corrections</h2>
-            <p>We are committed to correcting any errors in our content as quickly as possible. If you believe that you have found an error, please contact us at <a href="mailto:corrections@mortgagecalculator.co.uk">corrections@mortgagecalculator.co.uk</a>.</p>
+            <p>We are committed to correcting any errors in our content as quickly as possible. If you believe that you have found an error, please contact us at <a href="mailto:admin@mortagagecalculator.co.uk">admin@mortagagecalculator.co.uk</a>.</p>
           </section>
 
         </div>
@@ -119,7 +119,7 @@
           <p class="text-muted">A simple tool to help you plan your mortgage journey.</p>
         </div>
         <div class="col-md-6 text-md-end">
-          <p class="mb-0">© 2025 UK Mortgage Calculator. All rights reserved.</p>
+          <p class="mb-0">&copy; 2026 UK Mortgage Calculator. All rights reserved.</p>
         </div>
       </div>
     </div>
@@ -127,5 +127,32 @@
 
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <!-- Cookie Consent Banner -->
+  <div id="cookieConsent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#2c3e50;color:#fff;padding:16px 20px;z-index:9999;font-size:14px;">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+      <p class="mb-0 me-3">We use cookies to improve your experience and serve relevant ads via Google AdSense. By clicking "Accept", you consent to the use of cookies. See our <a href="/privacy.html" style="color:#7ec8e3;">Privacy Policy</a> for details.</p>
+      <div class="d-flex gap-2">
+        <button onclick="acceptCookies()" class="btn btn-primary btn-sm">Accept</button>
+        <button onclick="rejectCookies()" class="btn btn-outline-light btn-sm">Reject</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var consent = localStorage.getItem('cookieConsent');
+      if(consent === null){
+        document.getElementById('cookieConsent').style.display='block';
+      }
+    })();
+    function acceptCookies(){
+      localStorage.setItem('cookieConsent','accepted');
+      document.getElementById('cookieConsent').style.display='none';
+    }
+    function rejectCookies(){
+      localStorage.setItem('cookieConsent','rejected');
+      document.getElementById('cookieConsent').style.display='none';
+    }
+  </script>
+
 </body>
 </html>
